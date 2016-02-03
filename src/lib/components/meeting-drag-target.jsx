@@ -30,15 +30,15 @@ export default class MeetingDragTarget extends React.Component {
 
     dragOverListener = (event) => {
         this.onDragOver(event);
-    }
+    };
 
     dragLeaveListener = (event) => {
         this.onDragLeave(event);
-    }
+    };
 
     dropListener = (event) => {
         this.onDrop(event);
-    }
+    };
 
     componentDidMount() {
         window.addEventListener("dragover", this.dragOverListener);

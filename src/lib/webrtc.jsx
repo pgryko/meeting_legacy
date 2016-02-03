@@ -16,7 +16,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-const peerConnectionConfig = require('../config.jsx');
+const peerConnectionConfig = require('../lib/config.js');
 
 var webRTC = {
 

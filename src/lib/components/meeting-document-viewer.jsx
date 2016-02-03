@@ -41,7 +41,7 @@ export default class MeetingDocumentViewer extends React.Component {
             width: width,
             height: height
         });
-    }
+    };
 
     componentWillMount() {
         this.updateDimensions();

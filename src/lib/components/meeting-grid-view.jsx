@@ -51,7 +51,7 @@ export default class MeetingGridView extends React.Component {
             top: scrollTop,
             width: 0,
             height: 0,
-        }
+        };
 
         if (this.refs.root) {
 
@@ -67,7 +67,7 @@ export default class MeetingGridView extends React.Component {
             this.setState(visibleRect);
 
         }
-    }
+    };
 
     componentWillMount() {
         this.updateDimensions();
@@ -174,7 +174,7 @@ export default class MeetingGridView extends React.Component {
                             top: top,
                             width: width,
                             height: height
-                        }
+                        };
 
                         frame = this.insetRect(frame, this.ITEM_MARGIN);
 

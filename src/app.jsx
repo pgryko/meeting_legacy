@@ -89,7 +89,7 @@ class MeetingApp extends React.Component {
 
     engineStateObserver = (state) => {
         this.setState(state);
-    }
+    };
 
     componentDidMount() {
         engine.addStateObserver(this.engineStateObserver);
@@ -268,7 +268,7 @@ class Live extends React.Component {
 
     engineStateObserver = (state) => {
         this.setState(state);
-    }
+    };
 
     componentDidMount() {
         engine.addStateObserver(this.engineStateObserver);
@@ -306,10 +306,10 @@ webRTC.onIceCandidate = function (candidate) {
     }
     console.log("Sending ICE Candidate: " + candidate.candidate);
     engine.addIceCandidate(candidate);
-}
+};
 
-webRTC.onSessionDescription = function(session) { engine.setSession(session); }
-webRTC.onAttachLocalStream = function(stream) { engine.setLocalStream(stream); }
-webRTC.onAttachRemoteStream = function(stream) { engine.setRemoteStream(stream); }
-webRTC.onStateChange = function(state) { engine.setCallState(state); }
+webRTC.onSessionDescription = function(session) { engine.setSession(session); };
+webRTC.onAttachLocalStream = function(stream) { engine.setLocalStream(stream); };
+webRTC.onAttachRemoteStream = function(stream) { engine.setRemoteStream(stream); };
+webRTC.onStateChange = function(state) { engine.setCallState(state); };
 webRTC.setup();
