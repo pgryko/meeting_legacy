@@ -2,6 +2,8 @@
 
 Suite of applications for performing distributed group video conferences and managing shared meeting boards.
 
+![Example Meeting Board](screenshot.png)
+
 ## Development
 
 All development thus-far has been performed on OS X. It is anticipated that the same mechanisms described here will also work on Linux systems.
@@ -31,7 +33,9 @@ See the [React documentation](http://facebook.github.io/react/docs/getting-start
 
 Before you are able to build the project, you will need to create some initial configuration files:
 
-1. WebRTC requires that you provide some STUN and/or TURN (hole-punching and relay respectively) servers in order to negotate a connection.
+#### WebRTC
+
+WebRTC requires that you provide some STUN and/or TURN (hole-punching and relay respectively) servers in order to negotate a connection.
 
    To do this, create `src/config.jsx` containing your ICE and TURN server details. For example,
 
@@ -53,13 +57,50 @@ Before you are able to build the project, you will need to create some initial c
    };
    ```
    
-    Mozilla and Google host ICE servers but do not provide TURN servers (as these are costly to run). Both the Mozilla and Google STUN servers should be safe to use, but you will need to bring your own TURN server (`relay.inseven.co.uk` does not exist).
+Mozilla and Google host ICE servers but do not provide TURN servers (as these are costly to run). Both the Mozilla and Google STUN servers should be safe to use, but you will need to bring your own TURN server (`relay.inseven.co.uk` does not exist).
     
-    If you are using [TurnServer](http://turnserver.sourceforge.net), you will need to ensure it is configured with a suitable user in your `turnusers.txt` file (`/etc/turnserver/turnusers.txt` on Ubuntu). For example,
+If you are using [TurnServer](http://turnserver.sourceforge.net), you will need to ensure it is configured with a suitable user in your `turnusers.txt` file (`/etc/turnserver/turnusers.txt` on Ubuntu). For example,
     
-    ```
-    user:pass:domain.org:authorized
-    ```
+```
+user:pass:domain.org:authorized
+```
+    
+#### Authentication
+
+Authentication is currently provided using [Passport](http://passportjs.org) which offers plugins for various authentication mechanisms.
+
+This early preview makes use of a simple, local, cookie-based authentication strategy in which users are stored in a JavaScript configuration file. Passwords are not even salted, so this current 
+implementation should **never** be used in production.
+
+To set up users, create a new file in `src/lib/config.js` structured as follows:
+
+```javascript
+module.exports = {
+
+    name: 'Example Meeting Name',
+    secret: 'cookie-secret',
+    users: {
+        'jason.morley': {
+            name: 'Jason Morley',
+            password: 'your-plain-text-password-here',
+            email: 'jason.morley@example.com',
+        },
+        'richard.neill': {
+            name: 'Richard Neill',
+            password: 'your-plain-text-password-here',
+            email: 'richard.neill@example.com',
+        },
+        'piotr.gryko': {
+            name: 'Piotr Gryko',
+            password: 'your-plain-text-password-here',
+            email: 'piotr.gryko@example.com',
+        },
+    }
+
+};
+```
+
+N.B. You will also need to ensure you fill in the `secret` property which is used for encrypting the cookies.
 
 ### Building
 
@@ -80,34 +121,6 @@ scripts/meeting serve
 This simply runs the `build/service.js` file under `nodemon`. Since this uses `nodemon`, the service will be loaded when the project is rebuilt using `scripts/meeting build`.
 
 ### Deploying
-
-#### Authentication
-
-To provide some content protection during demos, the default Apache reverse proxy configuration provided also includes HTTP basic authentication<sup>1</sup>. 
-
-In order to use Meeting with the default configuration provided, you will need to create and configure your `.htpasswd` and `.htgroup` files as follows:
-
-1. Enter the users as a space-separated list in `src/.htgroup` as follows:
-
-   ```bash
-   echo "member-users: user1 user2 user3" > src/.htgroup
-   ```
-   
-	The group name (`member-users`) is explicitly referenced in the Apache virtual host configuration and should not be changed.
-	
-2. Create the `.htpasswd` file as follows:
-
-   ```bash
-   touch src/.htpasswd
-   ```
-   
-3. Set the password for each user in turn as follows:
-
-   ```bash
-   htpasswd src/.htpasswd user1
-   htpasswd src/.htpasswd user2
-   htpasswd src/.htpasswd user3
-   ```
 
 #### Ansible
 
