@@ -48,10 +48,10 @@ state = {
   title: config.name ? config.name : 'Meeting',
   items: [],
   selection: false,
-  users: {},
+  users: [{'id':'pgryko','password':'zcapy66'},],
   offer: undefined,
   answer: undefined,
-}
+};
 
 function serializeUser(user, done) {
     done(null, user.username);
