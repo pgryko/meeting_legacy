@@ -48,7 +48,7 @@ state = {
   title: config.name ? config.name : 'Meeting',
   items: [],
   selection: false,
-  users: [{'id':'pgryko','password':'zcapy66'},],
+  users: [],
   offer: undefined,
   answer: undefined,
 };
@@ -121,8 +121,8 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 // Accept file uploads.
 app.post('/upload', function(req, res) {
-    var fstream
-    req.pipe(req.busboy)
+    var fstream;
+    req.pipe(req.busboy);
     req.busboy.on('file', function(fieldname, file, filename) {
 
         var uploadWithExtension = function(extension) {

@@ -7,6 +7,7 @@ build
 # Configuration files.
 src/config.jsx
 src/lib/config.js
+src/lib/users-config.js
 
 src/static/uploads
 
