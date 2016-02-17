@@ -21,6 +21,8 @@ import os
 import os.path
 import shutil
 import subprocess
+import binascii
+import json
 
 from shutil import copytree
 
@@ -81,6 +83,42 @@ def command(args):
     except subprocess.CalledProcessError:
         exit("Unable to run command %s" % list(args))
 
+def config_gen(filename):
+	''' Generates default configuration file for app
+
+	This includes mozilla and google stun servers as default
+	And generates a random key for secret
+
+	'''
+
+	data = {
+
+	   'iceServers': [
+		    {
+		        'url': 'stun:stun.services.mozilla.com'
+		    },
+		    {
+		        'url': 'stun:stun.l.google.com:19302'
+		    },
+	    ],
+	    'secret': 'RandomKeyWillBeGenerated',
+	    'users': {
+	        'first.last': {
+	           'name': 'first last',
+	           'password': 'RandomPasswordWillBeGenerated',
+	           'email': 'first.last@doesnotexist.co.uk',
+	        },
+	    }
+	}
+
+	data['secret'] = binascii.hexlify(os.urandom(24))
+	data['users']['first.last']['password'] = binascii.hexlify(os.urandom(24))
+
+	json_str = json.dumps(data, indent=4)
+
+	# Writing JSON data
+	with open(filename, 'w') as f:
+		f.write("module.exports = " + json_str + ";")
 
 def clean(options):
     print "Cleaning..."
@@ -102,10 +140,17 @@ def build(options):
     print "Building..."
     static_dir = os.path.join(BUILD_DIR, "static")
     makedirs(BUILD_DIR)
+
+    #Check to see if config.js already exists, if not, create one from config_example
+    if not os.path.isfile(os.path.join(SRC_DIR, "lib/config.js")) :
+        config_gen(os.path.join(SRC_DIR, "lib/config.js"))
+
     copyfiles(SRC_DIR, BUILD_DIR, ["service.js",
                                    "lib/values.js",
                                    "lib/parse-message.js",
                                    "lib/config.js"])
+
+
     sync(os.path.join(SRC_DIR, "static"), static_dir)
     with Chdir(ROOT_DIR):
         babelify(source=os.path.join(SRC_DIR, "app.jsx"), target=os.path.join(static_dir, "app.js"))
