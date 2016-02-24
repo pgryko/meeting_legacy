@@ -134,7 +134,7 @@ class MeetingApp extends React.Component {
                 leftIcon={<Star />}
                 onTouchTap={() => engine.addItem({
                     title: "Continuous Improvement",
-                    url: "uploads/table.html"
+                    url: "http://unipartopserver.co.uk:8081/"
                 })} />,
             <MenuItem
                 key="add-shared-notes-menu-item"
