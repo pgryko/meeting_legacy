@@ -3,12 +3,12 @@
   vars:
 
     port: 80
-    domain: meeting.jbmorley.co.uk
-    admin: hello@jbmorley.co.uk
+    domain: unipartopserver.co.uk
+    admin: piotr.gryko@unipart.io
 
     service:
       name: "meeting"
-      author: "Jason Barrie Morley"
+      author: "Piotr Gryko"
       root: "/var/www/{{ domain }}"
       file: "service.js"
 

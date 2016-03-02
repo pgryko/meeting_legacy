@@ -43,6 +43,10 @@ var app = express();
 var server = HTTP.Server(app);
 var io = SocketIO(server);
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/meetingdb');
+
+
 // Application state.
 state = {
   title: config.name ? config.name : 'Meeting',
@@ -52,6 +56,7 @@ state = {
   offer: undefined,
   answer: undefined,
 };
+
 
 function serializeUser(user, done) {
     done(null, user.username);

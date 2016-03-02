@@ -1,3 +1,3 @@
 [meeting]
 
-inseven-web-01.inseven.co.uk ansible_ssh_user=jbmorley
+unipartopserver.co.uk ansible_ssh_user=pgryko
