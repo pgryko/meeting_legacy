@@ -227,7 +227,9 @@ class MeetingApp extends React.Component {
                         engine.addItem({title: title, url: url});
                     }}
                     onCancel={() => this.setState({showAddItemDialog: false})} />
+                {/*
 
+                // Disable WebRTC video
                 <MeetingWebRTC
                     useAppRTC={true}
                     callState={self.state.callState}
@@ -245,6 +247,7 @@ class MeetingApp extends React.Component {
                         }
 
                     }} />
+                 */}
 
             </div>
         );
