@@ -43,8 +43,8 @@ var app = express();
 var server = HTTP.Server(app);
 var io = SocketIO(server);
 
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/meetingdb');
+// var mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost/meetingdb');
 
 
 // Application state.
@@ -247,7 +247,7 @@ function getSocketUser(socket, callback) {
                     callback("Missing passport data", null);
                 } else {
                     deserializeUser(session.passport.user, callback);
-                }                
+                }
             });
         }
     });
