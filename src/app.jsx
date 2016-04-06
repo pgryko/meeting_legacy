@@ -195,10 +195,10 @@ class MeetingApp extends React.Component {
                     onChange={(event) => this.uploadFiles(event.target.files)}
                     hidden />
 
-                <MeetingDragTarget 
+                <MeetingDragTarget
                     onDropFile={(files) => this.uploadFiles(files)}/>
 
-                <MeetingProgressView 
+                <MeetingProgressView
                     style={{
                         position: 'fixed',
                         top: 0,
@@ -216,7 +216,7 @@ class MeetingApp extends React.Component {
                     showNavigation={this.state.showNavigation}
                     onShowNavigation={(show) => this.setState({showNavigation: show})}>
 
-                    {this.props.children}                    
+                    {this.props.children}
 
                 </MeetingAppScreen>
 
@@ -224,7 +224,8 @@ class MeetingApp extends React.Component {
                     open={this.state.showAddItemDialog}
                     onSubmit={(title, url) => {
                         this.setState({showAddItemDialog: false});
-                        engine.addItem({title: title, url: url});
+                        //The http:// prevents localhost from being added to url
+                        engine.addItem({title: title, url: "http://" + url});
                     }}
                     onCancel={() => this.setState({showAddItemDialog: false})} />
                 {/*

@@ -118,9 +118,9 @@ export default class MeetingGridViewItem extends React.Component {
                                 height: frameHeight + 'px',
                             }}
                             scrolling="no"
-                            /*Added https to prevent localhost from being added, need to test this */
-                            src={"http://" + this.props.url}
-                            onLoad={() => this.setState({loading: false})} />
+                            src={this.props.url}
+
+                            onLoad={() => {this.setState({loading: false}); console.log(this.props.url) }} />
 
                         <MeetingProgressView
                             style={{
