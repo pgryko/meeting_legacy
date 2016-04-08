@@ -18,13 +18,16 @@
     "express": "^4.10.2",
     "express-session": "^1.13.0",
     "gm": "^1.21.1",
+    "gravatar": "^1.5.2",
+    "gridfs-stream": "~1.1.1",
     "history": "^1.17.0",
     "material-ui": "^0.14.2",
+    "mongoose": "~4.4.3",
     "multipart": "^0.1.5",
     "node-uuid": "^1.4.7",
-    "nodejs-gravatar": "^1.0.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "qrcode.react": "~0.6.0",
     "react": "^0.14.6",
     "react-addons-css-transition-group": "^0.14.6",
     "react-addons-linked-state-mixin": "^0.14.6",
@@ -36,9 +39,6 @@
     "reactify": "^1.1.1",
     "socket.io": "^1.4.3",
     "socket.io-client": "^1.4.3",
-    "utf-8-validate": "^1.2.1",
-    "mongoose": "~4.4.3",
-    "gridfs-stream": "~1.1.1",
-    "qrcode.react": "~0.6.0"
+    "utf-8-validate": "^1.2.1"
   }
 }

@@ -27,7 +27,7 @@ var gm = require('gm');
 var uuid = require('node-uuid');
 var exec = require('child_process').exec;
 var util = require('util');
-var gravatar = require('nodejs-gravatar');
+var gravatar = require('gravatar');
 var update = require('react-addons-update');
 var session = require('express-session');
 var passport = require('passport');
@@ -269,11 +269,13 @@ io.on('connection', function(socket) {
         // Update the list of connected users.
         state.users[socket.uuid] = update(user, {
             uuid: {$set: socket.uuid},
-            avatar: {$set: gravatar.imageUrl(user.email, { "size": "128" })},
+            avatar: {$set: gravatar.url(user.email, { "s": "128" },true)},
         });
         broadcastState();
 
     });
+    //avatar: {$set: gravatar.imageUrl(user.email, { "size": "128" })},
+    //avatar: {$set: gravatar.profile_url(user.email, { "size": "128" })},
 
   socket.on('disconnect', function() {
 
