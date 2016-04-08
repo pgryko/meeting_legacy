@@ -49,7 +49,7 @@ var io = SocketIO(server);
 
 // Application state.
 state = {
-  title: config.name ? config.name : 'Meeting',
+  title: config.name ? config.name : 'Unipart Digital Comm Cell',
   items: [],
   selection: false,
   users: [],
@@ -336,6 +336,6 @@ io.on('connection', function(socket) {
   }));
 });
 
-server.listen(3000, function(){
-    console.log('listening on *:3000');
+server.listen(8090, function(){
+    console.log('listening on *:8090');
 });
