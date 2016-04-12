@@ -338,6 +338,6 @@ io.on('connection', function(socket) {
   }));
 });
 
-server.listen(8090, function(){
+server.listen(8090, "localhost", function(){
     console.log('listening on *:8090');
 });
