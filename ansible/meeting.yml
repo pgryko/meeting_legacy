@@ -7,10 +7,13 @@
     admin: piotr.gryko@unipart.io
 
     service:
-      name: "meeting"
+      name: "commcell_daemon"
       author: "Piotr Gryko"
       root: "/var/www/{{ domain }}"
       file: "service.js"
+      daemon: "/usr/bin/forever"
+      daemon_opts: "start /var/www/{{ domain }}/service.js"
+      pidfile: "/var/run/commcell_daemon.pid"
 
   tasks:
 
@@ -32,6 +35,9 @@
         - graphicsmagick
       become: yes
 
+    - name: "Install forever (to run Node.js app)."
+      npm: name=forever global=yes state=present
+      become: yes
 
     # - name: create virtual host file
     #   template: src=virtualhost.conf dest="/etc/apache2/sites-available/{{ domain }}.conf"
@@ -40,6 +46,7 @@
     - name: create site directory
       file: path="/var/www/{{ domain }}" state=directory owner="{{ ansible_user_id }}" group="{{ ansible_user_id }}"
       become: yes
+
 
     # - name: enable proxy_http
     #   command: a2enmod proxy_http
@@ -75,11 +82,20 @@
       file: dest=/var/www/{{ domain }}/static/uploads mode=0777 recurse=yes
       become: no
 
-    - name: create Node.js service
-      template: src="nodejs-service.conf" dest="/etc/init/{{ service.name }}.conf"
+
+    - name: "Check list of Node.js apps running."
+      command: forever list
+      register: forever_list
+      changed_when: false
+
+
+    - name: Add CommCell init.d daemon script
+      action: template src=nodejs-service.conf dest=/etc/init.d/{{ service.name }} mode=0751
       become: yes
-      notify:
-        - restart nodejs
+
+    - name: Ensure my daemon {{ service.name }} is started
+      action: service name={{ service.name }} state=started
+      become: yes
 
   handlers:
 
