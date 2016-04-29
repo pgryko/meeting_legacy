@@ -150,7 +150,7 @@ app.post('/upload', function(req, res) {
                 state.items.push({
                     uuid: uuid.v4(),
                     title: title,
-                    url: "/index.html#/viewer/" + path.basename(filename),
+                    url: "/uploads/" + path.basename(filename),
                     cleanup: cleanup
                 });
                 broadcastState();
