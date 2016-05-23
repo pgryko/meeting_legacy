@@ -128,21 +128,21 @@ class MeetingApp extends React.Component {
                 onTouchTap={() => this.refs.input.click()} />,
             <Divider
                 key="divider-1" />,
-            <MenuItem
+/*            <MenuItem
                 key="add-continuous-improvement-menu-item"
                 primaryText="Add continuous improvement"
                 leftIcon={<Star />}
                 onTouchTap={() => engine.addItem({
                     title: "Continuous Improvement",
                     url: "http://unipartopserver.co.uk:8081/"
-                })} />,
+                })} />, */
             <MenuItem
                 key="add-shared-notes-menu-item"
                 primaryText="Add shared notes"
                 leftIcon={<ModeEdit />}
                 onTouchTap={() => engine.addItem({
                     title: "Shared Notes",
-                    url: "http://46.101.84.147/p/meeting-notes"
+                    url: "https://commcell-etherpad.unipart.digital/p/Mclaren"
                 })} />,
             <Divider
                 key="divider-2" />,
