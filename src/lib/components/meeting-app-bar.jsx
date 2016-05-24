@@ -17,10 +17,10 @@
  */
 
 import React from 'react';
-import AppBar from 'material-ui/lib/app-bar';
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
-import IconMenu from 'material-ui/lib/menus/icon-menu';
-import IconButton from 'material-ui/lib/icon-button';
+import AppBar from 'material-ui/AppBar';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import IconMenu from 'material-ui/IconMenu';
+import IconButton from 'material-ui/IconButton';
 
 export default class MeetingAppBar extends React.Component {
 

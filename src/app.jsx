@@ -23,20 +23,23 @@ import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
 var injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
 
-import Avatar from 'material-ui/lib/avatar';
-import Divider from 'material-ui/lib/divider';
-import ExitToApp from 'material-ui/lib/svg-icons/action/exit-to-app';
-import FileUpload from 'material-ui/lib/svg-icons/file/file-upload';
-import InsertLink from 'material-ui/lib/svg-icons/editor/insert-link';
-import List from 'material-ui/lib/lists/list';
-import ListItem from 'material-ui/lib/lists/list-item';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import ModeEdit from 'material-ui/lib/svg-icons/editor/mode-edit';
-import Photo from 'material-ui/lib/svg-icons/image/photo';
-import RaisedButton from 'material-ui/lib/raised-button';
-import RemoveRedEye from 'material-ui/lib/svg-icons/image/remove-red-eye';
-import Star from 'material-ui/lib/svg-icons/toggle/star';
-import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import Avatar from 'material-ui/Avatar';
+// import Avatar from 'material-ui/avatar';
+// import Divider from 'material-ui/divider';
+import Divider from 'material-ui/Divider';
+import ExitToApp from 'material-ui/svg-icons/action/exit-to-app';
+import FileUpload from 'material-ui/svg-icons/file/file-upload';
+import InsertLink from 'material-ui/svg-icons/editor/insert-link';
+import List from 'material-ui/List';
+import ListItem from 'material-ui/List';
+import MenuItem from 'material-ui/MenuItem';
+import ModeEdit from 'material-ui/svg-icons/editor/mode-edit';
+import Photo from 'material-ui/svg-icons/image/photo';
+import RaisedButton from 'material-ui/RaisedButton';
+import RemoveRedEye from 'material-ui/svg-icons/image/remove-red-eye';
+import Star from 'material-ui/svg-icons/toggle/star';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Subheader from 'material-ui/Subheader';
 
 import MeetingAddItemDialog from './lib/components/meeting-add-item-dialog.jsx';
 import MeetingAppScreen from './lib/components/meeting-app-screen.jsx';
@@ -83,7 +86,7 @@ class MeetingApp extends React.Component {
 
     getChildContext() {
         return {
-            muiTheme: ThemeManager.getMuiTheme(MeetingTheme),
+            muiTheme: getMuiTheme(MeetingTheme),
         };
     }
 
@@ -170,8 +173,9 @@ class MeetingApp extends React.Component {
 
         var navigationItems = defaultNavigationItems.concat([
             <List
-                key="connected-users-list"
-                subheader="Connected users">
+                key="connected-users-list">
+            <Subheader>Connected users</Subheader>
+                
                 {this.state.users.map(function(item, index) {
                     return (
                         <ListItem

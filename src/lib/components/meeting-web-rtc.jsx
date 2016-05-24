@@ -18,9 +18,9 @@
 
 import React from 'react';
 
-import AVVideocamIcon from 'material-ui/lib/svg-icons/av/videocam';
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import Snackbar from 'material-ui/lib/snackbar';
+import AVVideocamIcon from 'material-ui/svg-icons/av/videocam';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Snackbar from 'material-ui/Snackbar';
 
 import MeetingAppRTC from './meeting-app-rtc.jsx';
 import MeetingVideoCall from './meeting-video-call.jsx';

@@ -21,7 +21,7 @@
     "gravatar": "^1.5.2",
     "gridfs-stream": "~1.1.1",
     "history": "^2.0.2",
-    "material-ui": "^0.14.2",
+    "material-ui": "^0.15.0",
     "mongoose": "~4.4.3",
     "multipart": "^0.1.5",
     "node-uuid": "^1.4.7",

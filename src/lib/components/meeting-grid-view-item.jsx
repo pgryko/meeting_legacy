@@ -18,11 +18,11 @@
 
 import React from 'react';
 
-import Card from 'material-ui/lib/card/card';
-import CardText from 'material-ui/lib/card/card-text';
-import Close from 'material-ui/lib/svg-icons/navigation/close';
-import FullscreenExit from 'material-ui/lib/svg-icons/navigation/fullscreen-exit';
-import IconButton from 'material-ui/lib/icon-button';
+import Card from 'material-ui/Card';
+import CardText from 'material-ui/Card';
+import Close from 'material-ui/svg-icons/navigation/close';
+import FullscreenExit from 'material-ui/svg-icons/navigation/fullscreen-exit';
+import IconButton from 'material-ui/IconButton';
 
 import MeetingProgressView from './meeting-progress-view.jsx';
 

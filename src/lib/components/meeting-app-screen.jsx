@@ -18,7 +18,7 @@
 
 import React from 'react';
 
-import LeftNav from 'material-ui/lib/left-nav';
+import LeftNav from 'material-ui/Drawer';
 
 import MeetingAppBar from './meeting-app-bar.jsx';
 

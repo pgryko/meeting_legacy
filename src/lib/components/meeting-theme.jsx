@@ -1,6 +1,6 @@
-const Colors = require('material-ui/lib/styles/colors');
-const ColorManipulator = require('material-ui/lib/utils/color-manipulator');
-const Spacing = require('material-ui/lib/styles/spacing');
+const Colors = require('material-ui/styles/colors');
+const ColorManipulator = require('material-ui/utils/colorManipulator');
+const Spacing = require('material-ui/styles/spacing');
 
 export default {
   spacing: Spacing,
