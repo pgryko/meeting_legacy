@@ -20,7 +20,7 @@
     "gm": "^1.21.1",
     "gravatar": "^1.5.2",
     "gridfs-stream": "~1.1.1",
-    "history": "^2.0.2",
+    "history": "^3.0.0",
     "material-ui": "^0.15.0",
     "mongoose": "~4.4.3",
     "multipart": "^0.1.5",
